@@ -1,0 +1,6 @@
+module Pods_TradingApp_TradingAppTests {
+  umbrella header "Pods-TradingApp-TradingAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

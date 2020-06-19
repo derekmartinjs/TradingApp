@@ -1,12 +1,12 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {createContext, ReactNode, useEffect, useState} from 'react';
+import {Text} from 'react-native';
+import axios from 'axios';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {Provider} from 'react-native-paper';
 
-import {Text} from 'react-native';
-
 import theme from './theme';
-// import SignedInStack from './signed-in/Stack';
-// import SignedOutStack from './signed-out/Stack';
+import SignedInStack from './signed-in/Stack';
+import SignedOutStack from './signed-out/Stack';
 
 /**
  * Types
@@ -23,24 +23,23 @@ function App() {
   const [listenUser, setListenUser] = useState(false);
   const [user, setUser] = useState<User>(null);
 
+  
   /** Listen for auth state changes */
   useEffect(() => {
     const authListener = auth().onAuthStateChanged(result => {
       setUser(result);
-
       if (initializing && !listenUser) {
         setInitializing(false);
         setListenUser(true);
       }
     });
 
-    // Cleanup
     return () => {
       if (authListener) {
         authListener();
       }
     };
-  }, [initializing, listenUser]); 
+  }, [initializing, listenUser]);
 
   /** Listen for user changes */
   useEffect(() => {
@@ -66,6 +65,7 @@ function App() {
   function container(children: ReactNode | ReactNode[]) {
     return <Provider theme={theme}>{children}</Provider>;
   }
+
   return container(
     user ? (
       <UserContext.Provider value={user}>
