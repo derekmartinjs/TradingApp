@@ -5,42 +5,22 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-community/google-signin';
+console.log(GoogleSignin);
 import {UserContext} from '../App';
 import ProviderButton from '../components/ProviderButton';
 import {getProviderButtonTitle} from '../util/helpers';
+import { GOOGLE_WEB_ID } from 'react-native-dotenv'
+ 
+const PROVIDER_ID = 'google.com';
 
 GoogleSignin.configure({
   scopes: ['profile', 'email'],
-  // TODO change me
-  webClientId: '478021106242-k0ubf98g1vhfo35ffb1deiggutlfie3i.apps.googleusercontent.com'
+  webClientId: GOOGLE_WEB_ID,
 });
 
-//com.googleusercontent.apps.478021106242-657nej3r7hen0i6ar88bc6tqme080kml
 function Google() {
-  async function onGoogleButtonPress() {
-    const { idToken } = await GoogleSignin.signIn();
-
-    // Create a Google credential with the file 
-    const credential = auth.GoogleAuthProvider.credential(idToken);
-
-    // Sign in the user with the credential 
-    return auth().signInWithCredential(credential);
-  }
-
-  return (
-    <Button 
-      title='Google SignIn'
-      onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
-    />
-  )
-
-}
-export default Google;
-
-/*
-const PROVIDER_ID = 'google.com';
-
-function Google() {
+ 
+  // Declare state variables
   const [loading, setLoading] = useState(false);
   const user = useContext(UserContext);
 
@@ -49,13 +29,24 @@ function Google() {
     PROVIDER_ID,
   );
 
+  /*
+  async function onGoogleButtonPress() {
+    const { idToken } = await GoogleSignin.signIn();
+
+    // Create a Google credential with the file 
+    const credential = auth.GoogleAuthProvider.credential(idToken);
+
+    // Sign in the user with the credential 
+    return auth().signInWithCredential(credential);
+  }*/
   async function handleGoogle() {
-    if (!loading && user) {
-      setLoading(true);
-      console.log
+    console.log(loading);
+    console.log(user)
+    if (!loading || !user) {
       try {
-        await GoogleSignIn.hasPlayServices();
-          
+        await GoogleSignin.hasPlayServices();
+        
+        console.log(variant)
         if (variant === 'UNLINK') {
           await user.unlink(PROVIDER_ID);
         } else {
@@ -89,16 +80,30 @@ function Google() {
     }
   }
 
-
   if (isOnlyProvider) {
     return null;
   }
-
 
   return (
     <ProviderButton loading={loading} type="google" onPress={handleGoogle}>
       {title}
     </ProviderButton>
+    );
+}
+export default Google;
+
+/*
+
+function Google() {
+
+
+
+
+
+
+
+  return (
+    
   );
 
 */

@@ -24,7 +24,7 @@ function SignedOutStack({theme}: Props) {
           headerTintColor: theme.colors.accent,
         }}>
         <Stack.Screen
-          name="SignIn"
+          name="Sign In To Tradefy"
           component={SignIn}
         />
         <Stack.Screen

@@ -21,39 +21,10 @@ function SignIn({navigation, theme}: Props) {
         image={
           'https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
         }>
-        <EmailPassword />
       </Hero>
 
-      <View style={[styles.fab, {backgroundColor: theme.colors.primary}]}>
-        <Icon name="arrow-down" color="#fff" size={23} />
-      </View>
-
       <View style={styles.center}>
-        <Button
-          color="#9e9e9e"
-          onPress={() => navigation.navigate('ForgotPassword')}
-          style={styles.button}>
-          Forgot password?
-        </Button>
-        <Button
-          mode="#contained"
-          icon="blinds"
-          onPress={() => navigation.navigate('CreateAccount')}
-          style={styles.button}>
-          Create an Account
-        </Button>
-
-        <View
-          style={[styles.divider, {backgroundColor: theme.colors.primary}]}
-        />
-
-        <Facebook />
         <Google />
-        <ProviderButton
-          type="phone"
-          onPress={() => navigation.navigate('PhoneSignIn')}>
-          Sign in with phone number
-        </ProviderButton>
       </View>
     </>
   );

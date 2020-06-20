@@ -1,2 +1,5 @@
+.env
+AuthKey_4NH8C8P3C7.p8
+/ios
 node_modules
 /ios/Pods
