@@ -12,7 +12,7 @@ import {getProviderButtonTitle} from '../util/helpers';
 GoogleSignin.configure({
   scopes: ['profile', 'email'],
   // TODO change me
-  webClientId: '478021106242-657nej3r7hen0i6ar88bc6tqme080kml.apps.googleusercontent.com'
+  webClientId: '478021106242-k0ubf98g1vhfo35ffb1deiggutlfie3i.apps.googleusercontent.com'
 });
 
 //com.googleusercontent.apps.478021106242-657nej3r7hen0i6ar88bc6tqme080kml
@@ -100,6 +100,5 @@ function Google() {
       {title}
     </ProviderButton>
   );
-}
 
 */
